@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationProject.Sesiune3
 {
@@ -53,6 +54,28 @@ namespace AutomationProject.Sesiune3
                     break;
             }
 
+
+            IWebElement dateofBirth = webdriver.FindElement(By.Id("dateOfBirthInput"));
+            dateofBirth.Click();
+
+            IWebElement datepickerMonth = webdriver.FindElement(By.XPath("//select[@class='react-datepicker__month-select']"));
+            SelectElement monthDrop = new SelectElement(datepickerMonth);
+            monthDrop.SelectByValue("2");
+
+            IWebElement datepickerYear = webdriver.FindElement(By.XPath("//select[@class='react-datepicker__year-select']"));
+            SelectElement yearDrop = new SelectElement(datepickerYear);
+            yearDrop.SelectByValue("1990");
+
+            IWebElement datepickerDate = webdriver.FindElement(By.XPath("//*[@class='react-datepicker__day react-datepicker__day--006' and not (contains(@class,'--outsidemonth'))]"));
+            SelectElement dateDrop = new SelectElement(datepickerDate);
+            dateDrop.SelectByValue("6");
+
+
+            //*[@class='react-datepicker__day react-datepicker__day--011' and not (contains(@class,, '--outsidemonth'))]
+
+
+            //IWebElement dateMYpicker = webdriver.FindElement(By.XPath("//select[aria-label='Choose Tuesday, December 17th, 2024']"));
+            //dateMYpicker.Click();
 
             IWebElement ElementSubject = webdriver.FindElement(By.Id("subjectsInput"));
             ElementSubject.SendKeys("English");

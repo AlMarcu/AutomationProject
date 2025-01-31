@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace AutomationProject.Sesiune3
 {
@@ -28,6 +29,15 @@ namespace AutomationProject.Sesiune3
 
             IWebElement selectMenu = driver.FindElement(By.XPath("//*[text()='Select Menu']"));
             selectMenu.Click();
+
+            IWebElement oldStyle = driver.FindElement(By.Id("oldSelectMenu"));
+            SelectElement dropDown = new SelectElement(oldStyle);
+            //dropDown.SelectByValue("3");
+            dropDown.SelectByText("Magenta");  
+
+            //oldStyle.Click();
+
+
 
         }
     }
